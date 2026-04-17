@@ -227,7 +227,40 @@ git push -u origin main
 
 ---
 
-### 6. Trigger GitHub Actions CI
+### 6. Jenkins CI/CD Pipeline
+
+A Jenkins pipeline is included in the repository via `Jenkinsfile`.
+
+To configure Jenkins:
+
+1. In Jenkins, create a new Pipeline job.
+2. Point the job at this GitHub repository.
+3. Use the repository's `Jenkinsfile` for the pipeline definition.
+
+The pipeline stages are:
+
+- `Checkout` — fetches the latest code
+- `Build` — runs `mvn clean package -DskipTests`
+- `Test` — runs `mvn test`
+- `Archive` — stores the generated JAR
+- `Deploy` — stops any existing app on port `8082`, then starts the new JAR
+
+The deployment stage assumes a Jenkins agent with:
+
+- Java installed
+- access to port `8082`
+- permission to run the application process
+
+If your Jenkins agent is Windows-based, the pipeline uses `bat`; otherwise it uses `sh`.
+
+After the pipeline completes successfully, the app will be available at:
+
+- `http://localhost:8082/`
+- `http://localhost:8082/status`
+
+---
+
+### 7. Trigger GitHub Actions CI
 
 GitHub Actions runs **automatically** once you push — no extra setup needed.
 
