@@ -5,7 +5,6 @@ pipeline {
         JAR_FILE = 'target/taskmanager-1.0.0.jar'
     }
     options {
-        ansiColor('xterm')
         disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
