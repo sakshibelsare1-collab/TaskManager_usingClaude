@@ -80,8 +80,8 @@ HTTP Request
 
 A browser-based UI is available at:
 
-- `http://localhost:8081/`
-- `http://localhost:8081/status` returns a simple JSON health/status response
+- `http://localhost:8082/`
+- `http://localhost:8082/status` returns a simple JSON health/status response
 
 The UI source is `src/main/resources/static/index.html` and the API is available under `/tasks`.
 
@@ -121,7 +121,7 @@ cd taskmanager
 mvn spring-boot:run
 ```
 
-The API will start on **http://localhost:8081** by default.
+The API will start on **http://localhost:8082** by default.
 
 If you change `server.port` in `src/main/resources/application.properties`, use that port instead.
 
@@ -129,23 +129,23 @@ If you change `server.port` in `src/main/resources/application.properties`, use 
 
 ```bash
 # Create a task
-curl -X POST http://localhost:8080/tasks \
+curl -X POST http://localhost:8082/tasks \
   -H "Content-Type: application/json" \
   -d '{"title":"Learn Spring Boot","description":"Build a REST API","completed":false}'
 
 # Get all tasks
-curl http://localhost:8080/tasks
+curl http://localhost:8082/tasks
 
 # Get task by ID
-curl http://localhost:8080/tasks/1
+curl http://localhost:8082/tasks/1
 
 # Update a task
-curl -X PUT http://localhost:8080/tasks/1 \
+curl -X PUT http://localhost:8082/tasks/1 \
   -H "Content-Type: application/json" \
   -d '{"title":"Learn Spring Boot","description":"Done!","completed":true}'
 
 # Delete a task
-curl -X DELETE http://localhost:8080/tasks/1
+curl -X DELETE http://localhost:8082/tasks/1
 ```
 
 ---
